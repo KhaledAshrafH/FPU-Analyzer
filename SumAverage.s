@@ -4,7 +4,7 @@
 # then append c:\mingw\bin; to the start of the PATH environment variable from control panel
 
 # To compile this assembly program on windows:
-# gcc -O3 -o sum.exe sum.s
+# gcc -O3 -o SumAverage.exe SumAverage.s
 # After running the program, enter a positive integer (n<=400) and then enter n integers then press enter
 
 #------------------------------------------------------------------------------------------------------
