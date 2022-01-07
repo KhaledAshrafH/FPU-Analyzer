@@ -1,78 +1,70 @@
-# To download gcc on windows:
-# download mingw (and make sure gcc is chosen while installation) from: 
-# mingw-get-setup.exe at the site https://osdn.net/projects/mingw/
-# then append c:\mingw\bin; to the start of the PATH environment variable from control panel
-
 # To compile this assembly program on windows:
 # gcc -O3 -o SumAverage.exe SumAverage.s
-# After running the program, enter a positive integer (n<=400) and then enter n integers then press enter
 
-#------------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------------
+                                  # initialized memory variables
+.section .data
 
-.section .data        # initialized memory variables, will be part of the exe
-_inputnum: .asciz "%lf\0"
-inputNumbers: .asciz "%d\0"
-outAverage: .asciz "The average is: %lf\n" 
-outSum: .asciz "The Sum is: %lf\n"
-_tmp: .double 0
-sum: .double 0
-average: .double 0
-numbers: .int 3
-counter: .double 0
+numInput: .asciz "%lf\0"
+num: .double 0.0
+
+numOfElementsInput: .asciz "%d\0"
+numOfElements: .int 0
+
+outSum: .asciz "sum=%lf "
+outAverage: .asciz "avg=%lf" 
+sum: .double 0.0
+average: .double 0.0
+
+counter: .double 0.0 # to store number of elements as a double
 one: .double 1.0
-#------------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------------
+                                  # instructions
+.section .text
 
+.globl _main
 
+_main:
+   # Get input number of elements
+   pushl $numOfElements
+   pushl $numOfElementsInput
+   call _scanf
+   add $8, %esp
 
-.section .text        # instructions
-
-.globl _main          # make _main accessible from external
-
-_main:                # the label indicating the start of the program
-
-
-  
-  pushl $numbers         
-   pushl $inputNumbers      
-   call _scanf   
-   add $8, %esp 
-
-    # movl $numbers,counter 
 loop1:
-    movl $_inputnum, %eax		
-    movl $_tmp, 4(%esp)
-    movl %eax, (%esp)
-    call _scanf
-    fldl sum          # push 1 to the floating point stack
-    faddl _tmp           # pop the floating point stack top (1), add it to r and push the    
-    fstpl sum  
-    fldl counter         # push 1 to the floating point stack
-    faddl one          # pop the floating point stack top (1), add it to r and push the    
-    fstpl counter 
-    addl $-1,numbers
-    cmpl $0, numbers
-    ja loop1
-    
+   # Get input double number
+   movl $numInput, %eax
+   movl $num, 4(%esp)
+   movl %eax, (%esp)
+   call _scanf
+   # add the double number to the sum
+   fldl sum
+   faddl num
+   fstpl sum
+   # increment the counter by 1
+   fldl counter
+   faddl one
+   fstpl counter
+   # decrement number of elements by 1
+   addl $-1,numOfElements
+   # Loop Condition
+   cmpl $0, numOfElements
+   ja loop1 # go to loop1
 
-    # calculate average
-    fldl sum          # push 1 to the floating point stack
-    fdivl counter          # pop the floating point stack top (1), add it to r and push the  
-    fstpl average  
-
-
-    pushl sum+4
-     pushl sum
-     pushl $outSum    # push to stack the first parameter to printf
-     call _printf          # call printf
-
-     pushl average+4
-     pushl average
-     pushl $outAverage   # push to stack the first parameter to printf
-     call _printf      
-     
-    
-     add $24, %esp 
-   
+   # calculate average
+   fldl sum
+   fdivl counter
+   fstpl average
+   # print the Sum
+   pushl sum+4
+   pushl sum
+   pushl $outSum
+   call _printf
+   # print the Average
+   pushl average+4
+   pushl average
+   pushl $outAverage
+   call _printf
+   # Pop the stack
+   add $24, %esp 
    ret
- 
-
