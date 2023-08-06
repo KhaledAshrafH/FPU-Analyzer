@@ -1,4 +1,4 @@
-# SumAverage Assembly Program
+# FPU-Analyzer Assembly Program
 
 This repository contains an assembly program written in AT&T syntax called `FPU-Analyzer`. The program analyzes a series of floating-point numbers and calculates their sum and average.
 
@@ -95,13 +95,13 @@ The entry point of the program.
 
 ## Usage
 
-After successfully compiling the program, you can run the `SumAverage.exe` executable on Windows or execute the resulting binary on your platform. The program will prompt you for inputs, and after providing the required information, it will display the calculated sum and average of the input numbers.
+After successfully compiling the program, you can run the `FPU-Analyzer.exe` executable on Windows or execute the resulting binary on your platform. The program will prompt you for inputs, and after providing the required information, it will display the calculated sum and average of the input numbers.
 
 Please note that this program is intended for educational purposes and serves as an example of assembly programming using AT&T syntax.
 
 ## Requirements
 
-To compile and run the SumAverage assembly program, you'll need the following:
+To compile and run the FPU-Analyzer assembly program, you'll need the following:
 
 - A compatible assembler and linker (such as `gcc`) for your platform.
 - An environment that supports x87 FPU instructions.
@@ -109,8 +109,8 @@ To compile and run the SumAverage assembly program, you'll need the following:
 
 ## Contributing
 
-Contributions to the SumAverage assembly program are welcome! If you find any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request.
+Contributions to the FPU-Analyzer assembly program are welcome! If you find any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request.
 
 ## License
 
-The SumAverage assembly program is licensed under the MIT License. You are free to use, modify, and distribute the code for personal. See the [LICENSE] file for more details.
+The FPU-Analyzer assembly program is licensed under the MIT License. You are free to use, modify, and distribute the code for personal. See the [LICENSE] file for more details.
