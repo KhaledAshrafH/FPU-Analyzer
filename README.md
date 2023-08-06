@@ -113,4 +113,4 @@ Contributions to the SumAverage assembly program are welcome! If you find any is
 
 ## License
 
-The SumAverage assembly program is licensed under the MIT License. You are free to use, modify, and distribute the code for personal or commercial purposes. See the [LICENSE] file for more details.
+The SumAverage assembly program is licensed under the MIT License. You are free to use, modify, and distribute the code for personal. See the [LICENSE] file for more details.
