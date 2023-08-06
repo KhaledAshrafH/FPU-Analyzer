@@ -3,7 +3,6 @@
 This repository contains an assembly program written in AT&T syntax called `FPU-Analyzer`. The program analyzes a series of floating-point numbers and calculates their sum and average.
 
 
-
 ## Description
 
 The `FPU-Analyzer` program prompts the user to provide the following inputs:
